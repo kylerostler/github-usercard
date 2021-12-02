@@ -4,16 +4,19 @@ import axios from 'axios';
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+const cards = document.querySelector('div.cards');
+
 function getUser(user) {
-  axios.get('https://api.github.com/users/kylerostler')
+  axios.get(user)
   .then(resp => {
     console.log(resp);
+    cards
   }).catch(error => {
     console.error(error);
   })
 };
 
-console.log(getUser());
+
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -80,7 +83,7 @@ function userMaker(userObj) {
   cardUserName.classList.add('username');
   //add content
   cardImage.src = userObj.data.avatar_url;
-  cardLink.href = 'https://api.github.com/users/kylerostler';
+  cardLink.href = `https://api.github.com/users/${userObj.data.login}`;
   cardName.textContent = `${userObj.data.login}`;
   cardUserName.textContent = `${userObj.data.login}`;
   cardLocation.textContent = `Location: ${userObj.data.location}`;
@@ -99,9 +102,12 @@ function userMaker(userObj) {
   cardInfo.appendChild(cardFollowers);
   cardInfo.appendChild(cardFollowing);
   cardInfo.appendChild(cardBio);
+  //return top element
+  return cardContainer;
 };
 
-console.log(userMaker)
+
+
 /*
   List of LS Instructors Github username's:
     tetondan
