@@ -1,8 +1,19 @@
+import axios from 'axios';
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+function getUser(user) {
+  axios.get('https://api.github.com/users/kylerostler')
+  .then(resp => {
+    console.log(resp);
+  }).catch(error => {
+    console.error(error);
+  })
+};
+
+console.log(getUser());
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -49,6 +60,32 @@ const followersArray = [];
       </div>
     </div>
 */
+function userMaker(userObj) {
+  //create elements
+  const cardContainer = document.createElement('div');
+  const cardImage = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const cardName = document.createElement('h3');
+  const cardUserName = document.createElement('p');
+  const cardLocation = document.createElement('p');
+  const cardProfile = document.createElement('p');
+  const cardLink = document.createElement('a');
+  const cardFollowers = document.createElement('p');
+  const cardFollowing = document.createElement('p');
+  const cardBio = document.createElement('p');
+  //add classes and styles to elements
+  cardContainer.classList.add('card');
+  cardInfo.classList.add('card-info');
+  cardName.classList.add('name');
+  cardUserName.classList.add('username');
+  //add content
+  cardImage.src = userObj.data.avatar_url;
+  cardLink.href = 'https://api.github.com/users/kylerostler';
+
+  
+
+};
+
 
 /*
   List of LS Instructors Github username's:
