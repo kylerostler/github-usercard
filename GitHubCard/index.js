@@ -81,12 +81,27 @@ function userMaker(userObj) {
   //add content
   cardImage.src = userObj.data.avatar_url;
   cardLink.href = 'https://api.github.com/users/kylerostler';
-
-  
-
+  cardName.textContent = `${userObj.data.login}`;
+  cardUserName.textContent = `${userObj.data.login}`;
+  cardLocation.textContent = `Location: ${userObj.data.location}`;
+  cardProfile.textContent = `Profile: ${cardLink}`;
+  cardFollowers.textContent = `Followers: ${userObj.data.followers}`;
+  cardFollowing.textContent = `Following : ${userObj.data.following}`;
+  cardBio.textContent = `Bio ${userObj.data.bio}`;
+  //append and set up heirarchy
+  cardContainer.appendChild(cardImage);
+  cardContainer.appendChild(cardInfo);
+  cardInfo.appendChild(cardName);
+  cardInfo.appendChild(cardUserName);
+  cardInfo.appendChild(cardLocation);
+  cardInfo.appendChild(cardProfile);
+  cardProfile.appendChild(cardLink);
+  cardInfo.appendChild(cardFollowers);
+  cardInfo.appendChild(cardFollowing);
+  cardInfo.appendChild(cardBio);
 };
 
-
+console.log(userMaker)
 /*
   List of LS Instructors Github username's:
     tetondan
